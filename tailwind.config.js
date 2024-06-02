@@ -2,7 +2,11 @@
 export default {
   content: ["./src/**/*.{tsx,ts,html}"],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ['Chakra Petch', 'sans-serif']
+    },
+    extend: {
+    },
   },
   plugins: [],
 }
