@@ -3,7 +3,7 @@ export default {
   content: ["./src/**/*.{tsx,ts,html}"],
   theme: {
     fontFamily: {
-      sans: ['Chakra Petch', 'sans-serif']
+      sans: ['Raleway', 'sans-serif']
     },
     extend: {
     },
