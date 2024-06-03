@@ -50,7 +50,6 @@ export default function Weather() {
     if (!data) {
         return <p>Loading...</p>
     }
-    console.log(data)
 
     const today = new Date()
     const dayData: DataPoint[] = data.hourly.time.reduce(
@@ -63,7 +62,7 @@ export default function Weather() {
                 date.getFullYear() === date.getFullYear()
             ) {
                 accumulator.push({
-                    date,
+                    unixTimestamp: Math.floor(date.getTime() / 1000),
                     value: data.hourly.temperature_2m[index],
                 })
             }
