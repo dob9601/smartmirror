@@ -73,7 +73,7 @@ export default function Weather() {
     )
 
     return (
-        <div>
+        <div className="flex flex-col gap-4 items-end">
             <p className="uppercase text-4xl text-right">Weather</p>
             <div className="flex gap-2 mt-2">
                 {data.daily.time.map((date, index) => {

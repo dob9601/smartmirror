@@ -5,8 +5,8 @@ function App() {
     return (
         <QueryClientProvider client={new QueryClient()}>
             <div className="bg-black">
-                <div className="w-screen h-screen bg-black border-r-2 border-b-2 rounded-br-2xl border-white p-4">
-                    <div className="relative w-full h-full overflow-hidden text-white font-sans">
+                <div className="w-screen h-screen bg-black border-r border-b rounded-br-2xl border-primary p-4">
+                    <div className="relative w-full h-full overflow-hidden text-primary font-sans">
                         <div className="w-full h-full m-2">
                             <div className="absolute right-0 bottom-0">
                                 <Weather />

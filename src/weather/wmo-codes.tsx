@@ -3,11 +3,17 @@
 import {
     IconCloud,
     IconCloudRain,
-    IconDropletHalfFilled,
     IconMoon,
     IconSun,
 } from "@tabler/icons-react"
 import { ReactNode } from "react"
+
+export enum WeatherQuality {
+    Good,
+    Neutral,
+    Bad,
+    VeryBad,
+}
 
 interface WmoCode {
     day: {
@@ -18,32 +24,40 @@ interface WmoCode {
         description: string
         icon?: ReactNode
     }
+    quality: WeatherQuality
+}
+
+const iconProps = {
+    strokeWidth: 1,
+    size: 48,
 }
 
 export const WMO_CODES: Record<number, WmoCode> = {
     0: {
         day: {
             description: "Sunny",
-            icon: <IconSun size={48} />,
+            icon: <IconSun {...iconProps} />,
         },
         night: {
             description: "Clear",
-            icon: <IconMoon size={48} />,
+            icon: <IconMoon {...iconProps} />,
         },
+        quality: WeatherQuality.Good,
     },
     1: {
         day: {
             description: "Mainly Sunny",
             icon: (
                 <div>
-                    <IconSun size={48} />
-                    <IconCloud />
+                    <IconSun {...iconProps} />
+                    <IconCloud {...iconProps} />
                 </div>
             ),
         },
         night: {
             description: "Mainly Clear",
         },
+        quality: WeatherQuality.Good,
     },
     2: {
         day: {
@@ -52,16 +66,18 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Partly Cloudy",
         },
+        quality: WeatherQuality.Neutral,
     },
     3: {
         day: {
             description: "Cloudy",
-            icon: <IconCloud size={48} />,
+            icon: <IconCloud {...iconProps} strokeWidth={1} />,
         },
         night: {
             description: "Cloudy",
-            icon: <IconCloud size={48} />,
+            icon: <IconCloud {...iconProps} />,
         },
+        quality: WeatherQuality.Neutral,
     },
     45: {
         day: {
@@ -70,6 +86,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Foggy",
         },
+        quality: WeatherQuality.Bad,
     },
     48: {
         day: {
@@ -78,6 +95,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Rime Fog",
         },
+        quality: WeatherQuality.Bad,
     },
     51: {
         day: {
@@ -86,6 +104,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Light Drizzle",
         },
+        quality: WeatherQuality.Bad,
     },
     53: {
         day: {
@@ -94,6 +113,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Drizzle",
         },
+        quality: WeatherQuality.Bad,
     },
     55: {
         day: {
@@ -102,6 +122,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Heavy Drizzle",
         },
+        quality: WeatherQuality.VeryBad,
     },
     56: {
         day: {
@@ -110,6 +131,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Light Freezing Drizzle",
         },
+        quality: WeatherQuality.Bad,
     },
     57: {
         day: {
@@ -118,15 +140,18 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Freezing Drizzle",
         },
+        quality: WeatherQuality.VeryBad,
     },
     61: {
         day: {
             description: "Light Rain",
-            icon: <IconDropletHalfFilled size={48} />,
+            icon: <IconCloudRain {...iconProps} />,
         },
         night: {
             description: "Light Rain",
+            icon: <IconCloudRain {...iconProps} />,
         },
+        quality: WeatherQuality.Bad,
     },
     63: {
         day: {
@@ -135,6 +160,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Rain",
         },
+        quality: WeatherQuality.VeryBad,
     },
     65: {
         day: {
@@ -143,6 +169,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Heavy Rain",
         },
+        quality: WeatherQuality.VeryBad,
     },
     66: {
         day: {
@@ -151,6 +178,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Light Freezing Rain",
         },
+        quality: WeatherQuality.VeryBad,
     },
     67: {
         day: {
@@ -159,6 +187,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Freezing Rain",
         },
+        quality: WeatherQuality.VeryBad,
     },
     71: {
         day: {
@@ -167,6 +196,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Light Snow",
         },
+        quality: WeatherQuality.Bad,
     },
     73: {
         day: {
@@ -175,6 +205,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Snow",
         },
+        quality: WeatherQuality.VeryBad,
     },
     75: {
         day: {
@@ -183,6 +214,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Heavy Snow",
         },
+        quality: WeatherQuality.VeryBad,
     },
     77: {
         day: {
@@ -191,16 +223,18 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Snow Grains",
         },
+        quality: WeatherQuality.Neutral,
     },
     80: {
         day: {
             description: "Light Showers",
-            icon: <IconCloudRain size={48} />,
+            icon: <IconCloudRain {...iconProps} />,
         },
         night: {
             description: "Light Showers",
-            icon: <IconCloudRain size={48} />,
+            icon: <IconCloudRain {...iconProps} />,
         },
+        quality: WeatherQuality.Bad,
     },
     81: {
         day: {
@@ -209,6 +243,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Showers",
         },
+        quality: WeatherQuality.Bad,
     },
     82: {
         day: {
@@ -217,6 +252,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Heavy Showers",
         },
+        quality: WeatherQuality.VeryBad,
     },
     85: {
         day: {
@@ -225,6 +261,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Light Snow Showers",
         },
+        quality: WeatherQuality.Neutral,
     },
     86: {
         day: {
@@ -233,6 +270,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Snow Showers",
         },
+        quality: WeatherQuality.Bad,
     },
     95: {
         day: {
@@ -241,6 +279,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Thunderstorm",
         },
+        quality: WeatherQuality.VeryBad,
     },
     96: {
         day: {
@@ -249,6 +288,7 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Light Thunderstorms With Hail",
         },
+        quality: WeatherQuality.VeryBad,
     },
     99: {
         day: {
@@ -257,5 +297,6 @@ export const WMO_CODES: Record<number, WmoCode> = {
         night: {
             description: "Thunderstorm With Hail",
         },
+        quality: WeatherQuality.VeryBad,
     },
 }

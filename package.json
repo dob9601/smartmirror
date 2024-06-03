@@ -13,6 +13,8 @@
         "@tabler/icons-react": "^3.5.0",
         "@tanstack/react-query": "^5.40.0",
         "@tauri-apps/api": "^1",
+        "dayjs": "^1.11.11",
+        "lodash": "^4.17.21",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "recharts": "^2.12.7",
