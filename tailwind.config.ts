@@ -4,6 +4,7 @@ export default {
     theme: {
         fontFamily: {
             sans: ["Barlow", "sans-serif"],
+            display: ["Chakra Petch", "sans-serif"],
         },
         extend: {
             colors: {

@@ -7,9 +7,6 @@ import {
     Label,
     ReferenceLine,
     ResponsiveContainer,
-    Scatter,
-    ScatterChart,
-    Tooltip,
     XAxis,
     YAxis,
 } from "recharts"
